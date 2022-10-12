@@ -1,85 +1,57 @@
 export default {
-  name: 'product',
-  title: 'Product',
-  type: 'document',
+  name: "product",
+  title: "Product",
+  type: "document",
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
+      name: "title",
+      title: "Title",
+      type: "string",
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 96,
       },
     },
     {
-      title: 'Default variant',
-      name: 'defaultProductVariant',
-      type: 'productVariant',
-    },
-    {
-      title: 'Variants',
-      name: 'variants',
-      type: 'array',
-      of: [
-        {
-          title: 'Variant',
-          type: 'productVariant',
-        },
-      ],
-    },
-    {
-      title: 'Tags',
-      name: 'tags',
-      type: 'array',
-      of: [
-        {
-          type: 'string',
-        },
-      ],
+      name: "mainImage",
+      title: "Main image",
+      type: "image",
       options: {
-        layout: 'tags',
+        hotspot: true,
       },
     },
     {
-      name: 'vendor',
-      title: 'Vendor',
-      type: 'reference',
-      to: {type: 'vendor'},
-    },
-    {
-      name: 'blurb',
-      title: 'Blurb',
-      type: 'localeString',
-    },
-    {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
+      title: "Tags",
+      name: "tags",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: {type: 'category'},
+          type: "string",
+        },
+      ],
+      options: {
+        layout: "tags",
+      },
+    },
+
+    {
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: { type: "category" },
         },
       ],
     },
-    {
-      name: 'body',
-      title: 'Body',
-      type: 'localeBlockContent',
-    },
+    { name: "description", type: "text" },
+    { name: "price", type: "number" },
+    { name: "product_count", type: "number" },
   ],
-
-  preview: {
-    select: {
-      title: 'title',
-      manufactor: 'manufactor.title',
-      media: 'defaultProductVariant.images[0]',
-    },
-  },
-}
+};
